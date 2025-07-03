@@ -58,9 +58,10 @@
       <!-- Page title -->
       <h1 class="text-4xl font-extrabold">Portfolio of Fernando Esquivias</h1>
 
-      <!-- Collapsible tags section -->
+      <!-- Collapsible tags section (indent summary to avoid layout shift) -->
       <details class="mb-6">
-        <summary class="cursor-pointer text-xl font-semibold">Tags</summary>
+        <!-- Added pl-4 to summary for consistent indentation -->
+        <summary class="cursor-pointer text-xl font-semibold pl-4">Tags</summary>
         <div class="mt-4 pl-4">
           <div class="mb-4">
             <h2 class="font-medium">Software & Languages</h2>
@@ -168,8 +169,7 @@
     </main>
   </div>
 
-  <!-- JavaScript: Filter logic with comments -->
-  <script>
+  <!-- JavaScript: Filter logic with comments --><script>
     // Set to track active filter tags
     const activeTags = new Set();
 
@@ -216,3 +216,4 @@
   </script>
 </body>
 </html>
+

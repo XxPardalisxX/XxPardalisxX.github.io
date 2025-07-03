@@ -1,69 +1,218 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio de Proyectos</title>
+  <!--
+    Portfolio Page for Fernando Esquivias
+    - English translation and detailed documentation
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio of Fernando Esquivias</title>
+  <!-- Tailwind CSS for utility-first styling -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body id="body" class="bg-gray-100 text-gray-800 font-sans min-h-screen transition-colors duration-300">
+  <div class="md:flex">
 
-  <header class="bg-white shadow p-6">
-    <h1 class="text-3xl font-bold">Portafolio de Proyectos</h1>
-    <p class="mt-1 text-gray-600">Desarrollador de simulaciones, juegos y arte generativo en Unity, Blender y Python.</p>
-  </header>
-
-  <main class="p-6">
-    <!-- Filtros -->
-    <div class="mb-6 space-x-2">
-      <button onclick="filterProjects('all')" class="px-3 py-1 bg-blue-500 text-white rounded">Todos</button>
-      <button onclick="filterProjects('Unity')" class="px-3 py-1 bg-gray-300 rounded">Unity</button>
-      <button onclick="filterProjects('Fractales')" class="px-3 py-1 bg-gray-300 rounded">Fractales</button>
-      <button onclick="filterProjects('Python')" class="px-3 py-1 bg-gray-300 rounded">Python</button>
-      <button onclick="filterProjects('Blender')" class="px-3 py-1 bg-gray-300 rounded">Blender</button>
-    </div>
-
-    <!-- Contenedor de proyectos -->
-    <div id="projects" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      
-      <!-- Proyecto de ejemplo: Fractales en Unity -->
-  <a href="Proyectos/fractal-generator.html" class="block project-card bg-white shadow-md rounded-lg overflow-hidden border tag-Unity tag-Fractales hover:shadow-lg transition">
-    <img src="fractales.png" alt="Fractal Generator" class="w-full h-48 object-cover">
-    <div class="p-4">
-      <h2 class="text-xl font-semibold">Fractal Generator</h2>
-      <p class="text-gray-600 text-sm mt-2">
-        Generador interactivo de fractales 2D y 3D en Unity con controles de profundidad, ángulo y color.
-      </p>
-      <div class="mt-3 flex flex-wrap gap-2 text-sm">
-        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">Unity</span>
-        <span class="bg-green-100 text-green-800 px-2 py-1 rounded">Fractales</span>
-        <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded">C#</span>
+    <!-- Sidebar: user information and contact details -->
+    <aside class="md:w-1/4 bg-white shadow p-6 space-y-6 sticky top-0 transition-colors duration-300">
+      <div class="flex justify-center">
+        <img src="my-photo.jpg" alt="Photo of Fernando Esquivias" class="w-32 h-32 rounded-full object-cover">
       </div>
-    </div>
-  </a>
+      <div>
+        <h2 class="text-2xl font-bold mb-1">Fernando Alberto Esquivias Robles</h2>
+        <p class="text-gray-600">Physics Student</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-1">Profile</h3>
+        <p class="text-sm">A motivated Physics student with strong background in research, data analysis, and simulations. Experienced in complex systems, neural networks, and AI.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-1">Skills</h3>
+        <ul class="list-disc list-inside text-sm">
+          <li>C++, C#, Python</li>
+          <li>Unity, Blender</li>
+          <li>Artificial Intelligence</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-1">Achievements</h3>
+        <ul class="list-disc list-inside text-sm">
+          <li>Bronze Medal – National Physics Olympiad</li>
+          <li>Silver & Bronze Medals – National Biology Olympiad</li>
+          <li>3rd Place – Mexican Physics Tournament</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-1">Contact</h3>
+        <p class="text-sm leading-tight">
+          📍 Ensenada, BC<br>
+          ✉️ <a href="mailto:fernando.esquivias@uabc.edu.mx" class="text-blue-600 hover:underline">fernando.esquivias@uabc.edu.mx</a><br>
+          📞 (686) 347-8729
+        </p>
+      </div>
+    </aside>
 
+    <!-- Main content area: portfolio projects -->
+    <main class="md:w-3/4 p-6 space-y-6">
+      <!-- Page title -->
+      <h1 class="text-4xl font-extrabold">Portfolio of Fernando Esquivias</h1>
 
-      <!-- Puedes duplicar esto para más proyectos -->
+      <!-- Collapsible tags section -->
+      <details class="mb-6">
+        <summary class="cursor-pointer text-xl font-semibold">Tags</summary>
+        <div class="mt-4 pl-4">
+          <div class="mb-4">
+            <h2 class="font-medium">Software & Languages</h2>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <button data-tag="Unity" class="filter-btn px-2 py-1 bg-gray-200 rounded">Unity</button>
+              <button data-tag="Python" class="filter-btn px-2 py-1 bg-gray-200 rounded">Python</button>
+              <button data-tag="C#" class="filter-btn px-2 py-1 bg-gray-200 rounded">C#</button>
+              <button data-tag="Blender" class="filter-btn px-2 py-1 bg-gray-200 rounded">Blender</button>
+            </div>
+          </div>
+          <div>
+            <h2 class="font-medium">Topics</h2>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <button data-tag="Fractals" class="filter-btn px-2 py-1 bg-gray-200 rounded">Fractals</button>
+              <button data-tag="Simulation" class="filter-btn px-2 py-1 bg-gray-200 rounded">Simulation</button>
+              <button data-tag="AI" class="filter-btn px-2 py-1 bg-gray-200 rounded">AI</button>
+              <button data-tag="Modeling" class="filter-btn px-2 py-1 bg-gray-200 rounded">Modeling</button>
+            </div>
+          </div>
+        </div>
+      </details>
 
-    </div>
-  </main>
+      <!-- Container for project cards -->
+      <div id="projects" class="space-y-4">
 
-  <footer class="p-6 text-center text-sm text-gray-500">
-    © 2025 Pardalis. Desarrollado con Tailwind CSS.
-  </footer>
+        <!-- Fractal Generator -->
+        <a href="projects/fractal-generator.html" class="block bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition overflow-hidden project-card tag-Unity tag-Fractals tag-C#">
+          <div class="md:flex">
+            <img src="fractals.png" alt="Fractal Generator screenshot" class="w-full md:w-48 h-32 object-cover md:h-auto">
+            <div class="p-4 flex-1">
+              <h2 class="text-xl font-semibold mb-1">Fractal Generator</h2>
+              <p class="text-gray-600 text-sm">Interactive 2D/3D fractal generator in Unity. Includes recursion and customizable parameters.</p>
+              <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">Unity</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded">Fractals</span>
+                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded">C#</span>
+              </div>
+            </div>
+          </div>
+        </a>
 
+        <!-- Neural Automata Simulator -->
+        <a href="projects/neural-automata.html" class="block bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition overflow-hidden project-card tag-Python tag-Simulation tag-AI">
+          <div class="md:flex">
+            <img src="neural_automata.png" alt="Neural Automata Simulator screenshot" class="w-full md:w-48 h-32 object-cover md:h-auto">
+            <div class="p-4 flex-1">
+              <h2 class="text-xl font-semibold mb-1">Neural Automata Simulator</h2>
+              <p class="text-gray-600 text-sm">Cellular automata simulation with neural networks in Python. Evaluates entropy and pattern dynamics.</p>
+              <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Python</span>
+                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded">Simulation</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded">AI</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Alien Ruin Model -->
+        <a href="projects/alien-ruin.html" class="block bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition overflow-hidden project-card tag-Blender tag-Modeling">
+          <div class="md:flex">
+            <img src="alien_ruin.png" alt="Alien Ruin Model screenshot" class="w-full md:w-48 h-32 object-cover md:h-auto">
+            <div class="p-4 flex-1">
+              <h2 class="text-xl font-semibold mb-1">Alien Ruin Model</h2>
+              <p class="text-gray-600 text-sm">3D model of an ancient alien structure created in Blender with PBR texturing and dynamic lighting effects.</p>
+              <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Blender</span>
+                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded">Modeling</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Python Fractal Explorer -->
+        <a href="projects/python-fractals.html" class="block bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition overflow-hidden project-card tag-Python tag-Fractals">
+          <div class="md:flex">
+            <img src="python_fractals.png" alt="Python Fractal Explorer screenshot" class="w-full md:w-48 h-32 object-cover md:h-auto">
+            <div class="p-4 flex-1">
+              <h2 class="text-xl font-semibold mb-1">Python Fractal Explorer</h2>
+              <p class="text-gray-600 text-sm">Tool in Python to generate and explore Mandelbrot and Julia fractals with GUI controls.</p>
+              <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Python</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded">Fractals</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Unity Procedural Maze -->
+        <a href="projects/unity-maze.html" class="block bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition overflow-hidden project-card tag-Unity tag-Simulation tag-C#">
+          <div class="md:flex">
+            <img src="unity_maze.png" alt="Unity Procedural Maze screenshot" class="w-full md:w-48 h-32 object-cover md:h-auto">
+            <div class="p-4 flex-1">
+              <h2 class="text-xl font-semibold mb-1">Unity Procedural Maze</h2>
+              <p class="text-gray-600 text-sm">3D maze generator in Unity using backtracking and BFS algorithms for dynamic level creation.</p>
+              <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">Unity</span>
+                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded">Simulation</span>
+                <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded">C#</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript: Filter logic with comments -->
   <script>
-    function filterProjects(tag) {
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        if (tag === 'all' || card.classList.contains(`tag-${tag}`)) {
-          card.style.display = 'block';
+    // Set to track active filter tags
+    const activeTags = new Set();
+
+    // Attach click listeners to filter buttons
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const tag = button.dataset.tag;
+        // Toggle tag in activeTags
+        activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
+        updateFilterButtons();
+        filterProjects();
+      });
+    });
+
+    /**
+     * Updates appearance of filter buttons
+     * Active tags get blue background and white text
+     */
+    function updateFilterButtons() {
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        const tag = button.dataset.tag;
+        if (activeTags.has(tag)) {
+          button.classList.add('bg-blue-500', 'text-white');
+          button.classList.remove('bg-gray-200');
         } else {
-          card.style.display = 'none';
+          button.classList.remove('bg-blue-500', 'text-white');
+          button.classList.add('bg-gray-200');
         }
       });
     }
-  </script>
 
+    /**
+     * Shows or hides project cards based on active tags
+     */
+    function filterProjects() {
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cardTags = Array.from(card.classList)
+          .filter(c => c.startsWith('tag-'))
+          .map(c => c.replace('tag-', ''));
+        const isVisible = Array.from(activeTags).every(tag => cardTags.includes(tag));
+        card.style.display = isVisible || activeTags.size === 0 ? 'block' : 'none';
+      });
+    }
+  </script>
 </body>
 </html>
